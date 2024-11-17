@@ -1,0 +1,63 @@
+import React, { useState } from 'react';
+
+interface Shirt {
+  name: string;
+  description: string;
+  image: string;
+}
+
+const shirts: Shirt[] = [
+  {
+    name: 'Sally Matching Shirt',
+    description: '¡Haz que tu estilo sea único con esta elegante camisa de Sally! Perfecta para cualquier fanático de las combinaciones y los looks atrevidos. Además, si eres un romántico empedernido, es ideal para compartirla con tu pareja. ¡El match perfecto entre comodidad y estilo!',
+    image: 'https://www.roblox.com/es/catalog/90967264155818/Sally-matching', // Añadir URL de la imagen aquí
+  },
+  {
+    name: 'MCQUEEN Matching Shirt',
+    description: 'La camisa MCQUEEN es el complemento ideal para quien busca un look audaz y moderno. Perfecta para combinar con su par, crea el conjunto ideal para lucirlo con tu pareja en todas las ocasiones. ¡El estilo nunca fue tan perfecto!',
+    image: 'https://www.roblox.com/es/catalog/89104957143422/MCQUEEN-matching', // Añadir URL de la imagen aquí
+  },
+  {
+    name: 'Porsche 911 Shirt',
+    description: 'Para los amantes de los autos de lujo, esta camisa del Porsche 911 te hará lucir como una verdadera estrella. Diseño inspirado en la icónica estética del automóvil más elegante de todos los tiempos. ¡Haz que tu avatar brille tanto como este auto de carreras!',
+    image: 'https://www.roblox.com/es/catalog/119097064156732/Porsche-911', // Añadir URL de la imagen aquí
+  },
+  {
+    name: 'Toyota Supra MK4 Shirt',
+    description: 'Con la camisa del Toyota Supra MK4, sentirás que tu avatar tiene el poder y el estilo de uno de los autos más legendarios del mundo. Esta pieza es imprescindible para los fanáticos del tuning y de los autos veloces. ¡Un diseño que te dejará sin palabras!',
+    image: 'https://www.roblox.com/es/catalog/135226571581680/Toyota-Supra-MK4', // Añadir URL de la imagen aquí
+  },
+  {
+    name: 'Kiss of Passion Shirt',
+    description: '¿Buscas un toque de romance? La camisa "Kiss of Passion" es perfecta para expresar todo el amor y la atracción. Con un diseño único inspirado en el poder de un beso, esta prenda es ideal para lucir con tu pareja o simplemente para disfrutar de un estilo lleno de pasión.',
+    image: 'https://www.roblox.com/es/catalog/95115967351604/Kiss-of-Passion-Shirt', // Añadir URL de la imagen aquí
+  },
+];
+
+const ShirtCard = ({ shirt }: { shirt: Shirt }) => {
+  return (
+    <div className="bg-white rounded-lg shadow-md p-4 w-80 m-4">
+      <img src={shirt.image} alt={shirt.name} className="w-full h-48 object-cover rounded-xl" />
+      <h2 className="text-lg font-bold mt-4">{shirt.name}</h2>
+      <p className="text-gray-600">{shirt.description}</p>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Comprar</button>
+    </div>
+  );
+};
+
+const App = () => {
+  const [selectedShirt, setSelectedShirt] = useState<Shirt | null>(null);
+
+  return (
+    <div className="bg-gray-100 p-4 flex flex-col items-center">
+      <h1 className="text-3xl font-bold mb-4">Tienda de Camisas</h1>
+      <div className="flex flex-wrap justify-center">
+        {shirts.map((shirt) => (
+          <ShirtCard key={shirt.name} shirt={shirt} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default App;
